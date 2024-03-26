@@ -1,0 +1,8 @@
+/dts-v1/;
+
+#include "th1520-lichee-cluster-4a-16g.dts"
+
+/ {
+	model = "EM-RV1-C4M16S128-A";
+	compatible = "scaleway,em-rv1-c4m16s128-a", "thead,th1520";
+};

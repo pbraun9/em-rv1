@@ -1,0 +1,52 @@
+/dts-v1/;
+/ {
+    description = "EM-RV1-C4M16S128-A boot FIT image";
+    #address-cells = <2>;
+    #size-cells = <0>;
+    images {
+        kernel {
+            description = "Linux Kernel";
+            data = /incbin/("../../linux/arch/riscv/boot/Image");
+            type = "kernel";
+            arch = "riscv";
+            os = "linux";
+            compression = "none";
+            load = <0x0 0x00200000>;
+            entry = <0x0 0x00000000>;
+            hash {
+                algo = "sha256";
+            };
+        };
+        opensbi {
+            description = "OpenSBI";
+            data = /incbin/("../../opensbi/build/platform/generic/firmware/fw_dynamic.bin");
+            type = "opensbi";
+            arch = "riscv";
+            compression = "none";
+            load = <0x0 0x0000000>;
+            hash {
+                algo = "sha256";
+            };
+        };
+        fdt {
+            description = "device tree";
+            data = /incbin/("em-rv1-c4m16s128-a.dtb");
+            type = "flat_dt";
+            arch = "riscv";
+            compression = "none";
+            load = <0x0 0x02800000>;
+            hash {
+                algo = "sha256";
+            };
+        };
+        env {
+            description = "User environment file.";
+            data = /incbin/("em-rv1-env.txt");
+            compression = "none";
+            hash {
+                algo = "sha256";
+            };
+        };
+    };
+    configurations {};
+};
