@@ -1,6 +1,6 @@
 /dts-v1/;
 
-#include "th1520-lichee-cluster-4a-16g.dts"
+#include "th1520-lichee-pi-4a-16g.dts"
 
 / {
 	model = "EM-RV1-C4M16S128-A";
